@@ -16,10 +16,10 @@ struct FMove : public FTableRowBase
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	FString Name;
-	//UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	//enum class EType* Type;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	int32 Damage;
+	enum class EType* Type;
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	int32 Power;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	int32 PowerPoints;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
