@@ -8,18 +8,18 @@ void ACharmander::BeginPlay()
 	Super::BeginPlay();
 
 	// Set Variables
-	Type            = EType::Fire;
+	Type            = "Fire";
 	Speed			= 65;
 	Defense			= 43;
 	SpecialAttack	= 60;
 	SpecialDefense	= 50;
 	Health			= 39;
 	Attack			= 52;
-	Level			= 1;
+	Lvl			= 1;
 	CurrentXp       = 0;
 } 
 	//improve stats
-void ACharmander::LevelUp()
+void ACharmander::LvlUp()
 {
 	Speed			+= FMath::RandRange(1,2);
 	Health			+= FMath::RandRange(1,5);
@@ -27,7 +27,7 @@ void ACharmander::LevelUp()
 	SpecialAttack	+= BattleStats;
 	SpecialDefense	+= BattleStats;
 	Attack			+= BattleStats;
-	Level			++;
+	Lvl			++;
 	CurrentXp        = 0;
 }
  

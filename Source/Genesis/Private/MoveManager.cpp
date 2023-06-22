@@ -2,6 +2,13 @@
 
 
 #include "MoveManager.h"
+#include "PokemonBase.h"
+#include "TypeModifier.h"
+
+
+
+UDataTable* UMoveManager::DTMove = nullptr;
+UDataTable* UMoveManager::DTTypeModifier = nullptr;
 
 UMoveManager::UMoveManager()
 {
@@ -22,17 +29,15 @@ UMoveManager::UMoveManager()
 
 void UMoveManager::Execute(APokemonBase* Target, APokemonBase* Attacker, const FName& MoveName)
 {
-	if(DTMove)
+	if(DTMove && DTTypeModifier)
 	{
-		const FMove* Move = DTMove->FindRow<FMove>(MoveName, TEXT("Pokemon MoveSet Context"), true);
-		if(Move)
+		if(const FMove* Move = DTMove->FindRow<FMove>(MoveName, TEXT("Pokemon MoveSet Context"), true))
 		{
-			const FString = static_cast<FString>(Move->Type) + static_cast<FString>(Target->Type);
-			FTypeModifier* TypeModifier = DTTypeModifier->FindRow<FTypeModifier>(static_cast<FName>(TwoTypeName), TEXT("Pokemon Type Context"), true);
-			if(TypeModifier)
+			const FString TwoTypeName = Move->Type + Target->GetType();
+			if(const FTypeModifier* TypeModifier = DTTypeModifier->FindRow<FTypeModifier>(static_cast<FName>(TwoTypeName), TEXT("Pokemon Type Context"), true))
 			{
-				// ( ( ( (2 * AttackerLevel / 5) + 2) * MovePower * (AttackerAttackStat / TargetDefence) ) / 50 + 2) * TypeModifier
-				((((2 * Attacker->GetLevel() / 5) + 2) * Move->Power * (Attacker->GetAttack() / Target->GetDefence())) / 50 + 2) * TypeModifier->Amount;
+				const float Damage = ((((2 * Attacker->GetLvl() / 5) + 2) * Move->Power * (Attacker->GetAttack() / Target->GetDefence())) / 50 + 2) * TypeModifier->Amount;
+				Target->ApplyDamage(Damage);
 			}
 		}
 	}

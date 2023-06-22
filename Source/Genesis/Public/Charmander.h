@@ -16,7 +16,7 @@ class GENESIS_API ACharmander : public APokemonBase
 	GENERATED_BODY()
 	
 public:
-	UFUNCTION() virtual void LevelUp() override;
+	UFUNCTION() virtual void LvlUp() override;
 
 protected:
 	virtual void BeginPlay() override;

@@ -22,6 +22,30 @@ void APokemonBase::BeginPlay()
 	
 } 
 
+FString APokemonBase::GetType() const
+{
+	return Type;
+}
+
+int32 APokemonBase::GetAttack() const
+{
+	return Attack;
+}
+
+int32 APokemonBase::GetDefence() const
+{
+	return Defense;
+}
+
+int32 APokemonBase::GetLvl() const
+{
+	return Lvl;
+}
+
+void APokemonBase::ApplyDamage(const int DamageAmt)
+{
+	Health -= DamageAmt;
+}
 
 
 

@@ -9,6 +9,8 @@
 /**
  * 
  */
+enum class EType;
+
 USTRUCT(BlueprintType)
 struct FMove : public FTableRowBase
 {
@@ -17,7 +19,7 @@ struct FMove : public FTableRowBase
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	FString Name;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-	enum class EType* Type;
+	FString Type;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	int32 Power;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")

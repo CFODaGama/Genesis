@@ -4,7 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "TypeEnum.h"
 #include "PokemonBase.generated.h"
 
 UCLASS()
@@ -16,7 +15,16 @@ class GENESIS_API APokemonBase : public AActor
 public:	
 	// Sets default values for this actor's properties
 	APokemonBase();
-	
+	UFUNCTION()
+	FString GetType() const;
+	UFUNCTION()
+	int32 GetAttack() const;
+	UFUNCTION()
+	int32 GetDefence() const;
+	UFUNCTION()
+	int32 GetLvl() const;
+	UFUNCTION()
+	void ApplyDamage(const int DamageAmt);
 
 
 	
@@ -26,19 +34,19 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	UPROPERTY(EditAnywhere)EType Type;
+	UPROPERTY(EditAnywhere)FString Type;
 	UPROPERTY(EditAnywhere)int Speed;
 	UPROPERTY(EditAnywhere)int Defense;
 	UPROPERTY(EditAnywhere)int SpecialAttack;
 	UPROPERTY(EditAnywhere)int SpecialDefense;
 	UPROPERTY(EditAnywhere)int Health;
 	UPROPERTY(EditAnywhere)int Attack;
-	UPROPERTY(EditAnywhere)int Level;
+	UPROPERTY(EditAnywhere)int Lvl;
 	UPROPERTY(EditAnywhere)int MaxXp = 100;
 	UPROPERTY(EditAnywhere)int CurrentXp;
 	UPROPERTY() int32 BattleStats = FMath::RandRange(1,4);
 	
-	virtual void LevelUp() {}
+	virtual void LvlUp() {}
 
 
 };
