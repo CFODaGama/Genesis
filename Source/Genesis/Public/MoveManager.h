@@ -7,8 +7,8 @@
 #include "Engine/DataTable.h"
 #include "MoveManager.generated.h"
 
-// class APokemonBase;
-class FTypeModifier;
+class APokemonBase;
+struct FTypeModifier;
 
 UCLASS()
 class GENESIS_API UMoveManager : public UObject
