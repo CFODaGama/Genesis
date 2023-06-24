@@ -9,7 +9,6 @@
 /**
  * 
  */
-enum class EType;
 
 USTRUCT(BlueprintType)
 struct FMove : public FTableRowBase

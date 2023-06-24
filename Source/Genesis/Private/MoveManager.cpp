@@ -20,7 +20,7 @@ UMoveManager::UMoveManager()
 	
 	// Find TypeModifierTable
 
-	static ConstructorHelpers::FObjectFinder<UDataTable> DTTypeModifierFinder(TEXT("C:/Users/chirp/Documents/Unreal Projects/Genesis/Content/_MyContent/Data/DT_Move.uasset"));
+	static ConstructorHelpers::FObjectFinder<UDataTable> DTTypeModifierFinder(TEXT("C:/Users/chirp/Documents/Unreal Projects/Genesis/Content/_MyContent/Data/DT_TypeModifier.uasset"));
 	if(DTTypeModifierFinder.Succeeded())
 	{
 		DTTypeModifier = DTTypeModifierFinder.Object;
@@ -33,10 +33,10 @@ void UMoveManager::Execute(APokemonBase* Target, APokemonBase* Attacker, const F
 	{
 		if(const FMove* Move = DTMove->FindRow<FMove>(MoveName, TEXT("Pokemon MoveSet Context"), true))
 		{
-			const FString TwoTypeName = Move->Type + Target->GetType();
-			if(const FTypeModifier* TypeModifier = DTTypeModifier->FindRow<FTypeModifier>(static_cast<FName>(TwoTypeName), TEXT("Pokemon Type Context"), true))
+			if(const FTypeModifier* TypeModifierRow = DTTypeModifier->FindRow<FTypeModifier>(static_cast<FName>(Move->Type), TEXT("Pokemon Type Context"), true))
 			{
-				const float Damage = ((((2 * Attacker->GetLvl() / 5) + 2) * Move->Power * (Attacker->GetAttack() / Target->GetDefence())) / 50 + 2) * TypeModifier->Amount;
+				const float TypeModifierValue = *(TypeModifierRow->TypeModifiers.Find(Target->GetType()));
+				const float Damage = ((((2 * Attacker->GetLvl() / 5) + 2) * Move->Power * (Attacker->GetAttack() / Target->GetDefence())) / 50 + 2) * TypeModifierValue;
 				Target->ApplyDamage(Damage);
 			}
 		}

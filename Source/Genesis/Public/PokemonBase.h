@@ -31,10 +31,10 @@ public:
 
 	// Called every frame
 
-
+   
 protected:
 	virtual void BeginPlay() override;
-	UPROPERTY(EditAnywhere)FString Type;
+	UPROPERTY(EditAnywhere)TArray<FString> Type;
 	UPROPERTY(EditAnywhere)int Speed;
 	UPROPERTY(EditAnywhere)int Defense;
 	UPROPERTY(EditAnywhere)int SpecialAttack;
