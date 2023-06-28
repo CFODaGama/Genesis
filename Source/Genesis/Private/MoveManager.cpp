@@ -49,5 +49,13 @@ void UMoveManager::Execute(APokemonBase* Target, APokemonBase* Attacker, const F
 	
 }
 
+void UMoveManager::TeachMove( APokemonBase* Target, const FName& MoveName)
+{
+	if(const FMove* Move = DTMove->FindRow<FMove>(MoveName, TEXT("Pokemon MoveSet Context"), true))
+	{
+		Target->AppendMoveSet(*Move);
+	}
+}
+
 
 

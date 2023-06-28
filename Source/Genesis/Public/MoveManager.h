@@ -22,7 +22,9 @@ public:
 	*  that gets input from UI for the move that was 
 	*  executed in order to inflict on the target */
 	UFUNCTION(BlueprintCallable, Category = "MoveManager")
-	static void Execute( APokemonBase* Target, APokemonBase* Attacker, const FName& MoveName);
+	static void Execute(APokemonBase* Target, APokemonBase* Attacker, const FName& MoveName);
+	UFUNCTION(BlueprintCallable, Category = "MoveManager")
+	static void TeachMove(APokemonBase* Target, const FName& MoveName);
 	
 	UMoveManager();
 };

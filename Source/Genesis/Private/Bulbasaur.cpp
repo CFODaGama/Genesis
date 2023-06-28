@@ -15,6 +15,8 @@ ABulbasaur::ABulbasaur()
 	SpecialDefense	= 50;
 	Health			= 39;
 	Attack			= 52;
+	
+	UMoveManager::TeachMove(this, FName("Tackle"));
 }
 
 

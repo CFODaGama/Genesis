@@ -3,14 +3,11 @@
 
 #include "PokemonBase.h"
 
-#include "MoveManager.h"
-
 APokemonBase::APokemonBase()
 {
 	// Init Variables
 	Lvl = 1;
 	CurrentXp = 0;
-	MoveManager = UMoveManager::StaticClass();
 
 	// Set Components
 	SceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Scene"));
@@ -56,6 +53,11 @@ void APokemonBase::LvlUp()
 	Attack			+= FMath::RandRange(1,4);
 	Lvl				++;
 	CurrentXp        = 0;
+}
+
+void APokemonBase::AppendMoveSet(const FMove& Move)
+{
+	MoveSet.Add(Move);
 }
 
 

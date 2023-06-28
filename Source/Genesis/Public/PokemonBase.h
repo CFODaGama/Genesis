@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "MoveManager.h"
 #include "GameFramework/Actor.h"
 #include "Genesis/Move.h"
 #include "PokemonBase.generated.h"
 
-class UMoveManager;
 class USceneComponent;
 class USkeletalMeshComponent;
 
@@ -29,6 +29,10 @@ public:
 	int32 GetDefence() const;
 	UFUNCTION()
 	int32 GetLvl() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Pokemon Functions")
+	void AppendMoveSet(const FMove& Move);
+	
 	UFUNCTION()
 	void ApplyDamage(const int DamageAmt);
    
@@ -40,12 +44,6 @@ protected:
 	TArray<FString> Types;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Pokemon")
 	TArray<FMove> MoveSet;
-	
-#pragma region TSubClassOf
-
-	TSubclassOf<UMoveManager> MoveManager;
-	
-#pragma endregion TSubClassOf
 	
 #pragma region Components
 
@@ -87,8 +85,5 @@ protected:
 	
 	UFUNCTION(BlueprintCallable, Category = "Pokemon Functions")
 	void LvlUp();
-	
-
-
 };
 

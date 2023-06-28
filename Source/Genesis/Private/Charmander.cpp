@@ -3,6 +3,7 @@
 
 #include "Charmander.h"
 
+
 ACharmander::ACharmander()
 {
 	// Set Variables
@@ -13,6 +14,8 @@ ACharmander::ACharmander()
 	SpecialDefense	= 50;
 	Health			= 39;
 	Attack			= 52;
+
+	UMoveManager::TeachMove(this, FName("Scratch"));
 }
 
 

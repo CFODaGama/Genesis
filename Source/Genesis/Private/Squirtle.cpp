@@ -13,6 +13,8 @@ ASquirtle::ASquirtle()
 	SpecialDefense	= 64;
 	Health			= 44;
 	Attack			= 48;
+
+	UMoveManager::TeachMove(this, FName("Tackle"));
 }
 
 
