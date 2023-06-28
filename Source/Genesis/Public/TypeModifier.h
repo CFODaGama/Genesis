@@ -13,7 +13,7 @@ USTRUCT(BlueprintType)
 struct FTypeModifier : public FTableRowBase
 {
 	GENERATED_BODY()
-
-	UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category = "Type Modifer")
-	float Amount;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Type Modifer")
+	TMap<FString, float> TypeModifiers;
 };
