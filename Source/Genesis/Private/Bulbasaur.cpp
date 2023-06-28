@@ -1,9 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Charmander.h"
+#include "Bulbasaur.h"
 
-ACharmander::ACharmander()
+
+// Sets default values
+ABulbasaur::ABulbasaur()
 {
 	// Set Variables
 	Types           = {"Fire"};

@@ -4,17 +4,16 @@
 
 #include "CoreMinimal.h"
 #include "PokemonBase.h"
-#include "Charmander.generated.h"
+#include "Squirtle.generated.h"
 
 /**
  * 
  */
 UCLASS()
-
-class GENESIS_API ACharmander : public APokemonBase
+class GENESIS_API ASquirtle : public APokemonBase
 {
 	GENERATED_BODY()
+
 public:
-	ACharmander();
-	
+	ASquirtle();
 };

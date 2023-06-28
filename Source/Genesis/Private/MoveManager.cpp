@@ -35,7 +35,11 @@ void UMoveManager::Execute(APokemonBase* Target, APokemonBase* Attacker, const F
 		{
 			if(const FTypeModifier* TypeModifierRow = DTTypeModifier->FindRow<FTypeModifier>(static_cast<FName>(Move->Type), TEXT("Pokemon Type Context"), true))
 			{
-				const float TypeModifierValue = *(TypeModifierRow->TypeModifiers.Find(Target->GetType()));
+				float TypeModifierValue = 0;
+				for (auto Type : Target->GetTypes())
+				{
+					TypeModifierValue += *(TypeModifierRow->TypeModifiers.Find(Type));
+				}
 				const float Damage = ((((2 * Attacker->GetLvl() / 5) + 2) * Move->Power * (Attacker->GetAttack() / Target->GetDefence())) / 50 + 2) * TypeModifierValue;
 				Target->ApplyDamage(Damage);
 			}

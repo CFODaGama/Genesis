@@ -3,28 +3,27 @@
 
 #include "PokemonBase.h"
 
+#include "MoveManager.h"
 
-
-
-
-// Sets default values
 APokemonBase::APokemonBase()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	// Init Variables
+	Lvl = 1;
+	CurrentXp = 0;
+	MoveManager = UMoveManager::StaticClass();
+
+	// Set Components
+	SceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("Scene"));
+	RootComponent = SceneComponent;
+
+	PokemonMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("PokemonMesh"));
+	PokemonMesh->SetupAttachment(SceneComponent);
 	
 }
 
-// Called when the game starts or when spawned
-void APokemonBase::BeginPlay()
+TArray<FString>& APokemonBase::GetTypes()
 {
-	Super::BeginPlay();
-	
-} 
-
-FString APokemonBase::GetType() const
-{
-	return Type;
+	return Types;
 }
 
 int32 APokemonBase::GetAttack() const
@@ -47,6 +46,17 @@ void APokemonBase::ApplyDamage(const int DamageAmt)
 	Health -= DamageAmt;
 }
 
+void APokemonBase::LvlUp()
+{
+	Speed			+= FMath::RandRange(1,2);
+	Health			+= FMath::RandRange(1,5);
+	Defense			+= FMath::RandRange(1,4);
+	SpecialAttack	+= FMath::RandRange(1,4);
+	SpecialDefense	+= FMath::RandRange(1,4);
+	Attack			+= FMath::RandRange(1,4);
+	Lvl				++;
+	CurrentXp        = 0;
+}
 
 
 
