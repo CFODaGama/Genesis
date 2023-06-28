@@ -15,7 +15,7 @@ void ACharmander::BeginPlay()
 	SpecialDefense	= 50;
 	Health			= 39;
 	Attack			= 52;
-	Lvl			= 1;
+	Lvl			    = 1;
 	CurrentXp       = 0;
 } 
 	//improve stats
